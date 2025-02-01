@@ -1,4 +1,4 @@
-moro_raw <- read_tsv(file = "/mnt/muw/moro - modelrooster-20250102.tsv", na = NA_character_, lazy = F,
+moro_raw <- read_tsv(file = "/mnt/muw/Roosters 3.0 - modelrooster-20250102.tsv", na = NA_character_, lazy = F,
                      col_types = paste(rep("c", 37), collapse = "")) |> 
   mutate(week_1 = paste(`week 1`, t1, r1, sep = "@"),
          week_2 = paste(`week 2`, t2, r2, sep = "@"),
@@ -47,5 +47,5 @@ moro_std_2 <- moro_std_1 |> select(bc_cycle_raw = cycle, bc_day_of_week, bc_star
   mutate(wrk_sel = case_when(str_detect(bc_cycle, "C\\d") ~ T,
                              str_sub(bc_cycle, -1) == str_to_upper(str_sub(m_label, -1)) ~ T,
                              T ~ F),
-         moro_key = paste0(bc_cycle, bc_day_of_week, "H", bc_start)) |> filter(wrk_sel) |> 
-  select(moro_key, bc_len:bc_desk, bc_type = m_value)
+         bc_slot = paste0(bc_cycle, bc_day_of_week, "H", bc_start)) |> filter(wrk_sel) |> 
+  select(bc_slot, bc_len:bc_desk, bc_type = m_value)
