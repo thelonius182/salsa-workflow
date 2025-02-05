@@ -1,4 +1,4 @@
-moro_raw <- read_tsv(file = "/mnt/muw/Roosters 3.0 - modelrooster-20250102.tsv", na = NA_character_, lazy = F,
+moro_raw <- read_tsv(file = "/mnt/muw/Roosters 3.0 - modelrooster-20250206.tsv", na = NA_character_, lazy = F,
                      col_types = paste(rep("c", 37), collapse = "")) |> 
   mutate(week_1 = paste(`week 1`, t1, r1, sep = "@"),
          week_2 = paste(`week 2`, t2, r2, sep = "@"),
